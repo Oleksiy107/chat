@@ -1,0 +1,7 @@
+.formBox{
+    display: none;
+  }
+  .messageSend {
+    display: flex;
+    flex-direction: column;
+  }
