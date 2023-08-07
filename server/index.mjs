@@ -7,13 +7,13 @@ import { fileURLToPath } from 'url';
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-const port = 5554;
+const port = 5555;
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const publicPath = new URL('public', `file://${__dirname}`).pathname
-
+const publicPath = path.join(__dirname, "../public");
 
 app.use(express.static(publicPath));
+
 
 io.on('connection', socket => {
     socket.on('send name', username => {
