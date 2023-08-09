@@ -21,11 +21,12 @@
             Chat
         </h2>
         <input type="text" id="message" placeholder="Message" class="message">
-        <button>Send</button>
+        <button id="sendMessage">Send</button>
+        <div id="messageArea" class="messageSend">
+           
+        </div>
+            
     </form>
-    <div id="messageArea" class="messageSend">
-
-    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>

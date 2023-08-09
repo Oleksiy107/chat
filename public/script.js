@@ -5,6 +5,7 @@ const socket = io();
 const form = document.getElementById('form');
 const myname = document.getElementById('myname');
 const message = document.getElementById('message');
+const send = document.getElementById('sendMessage')
 
 function checkName(){
    if( myname.value.trim() === ''){
@@ -29,21 +30,21 @@ function formatDate(date) {
 }
 
 socket.on('send name', (username) => {
-    const nameWithDate = document.createElement('p');
-
-    
+    const nameWithDateMessage = document.createElement('p');   
+    nameWithDateMessage.id = 'messageName'
     const currentDate = new Date();
     const formattedDate = formatDate(currentDate);
-
-    nameWithDate.textContent = `${formattedDate} - ${username}:`;
-
-    messageArea.appendChild(nameWithDate);
+    nameWithDateMessage.textContent = `${formattedDate} - ${username}:`;
+    
+    messageArea.appendChild(nameWithDateMessage);
+  
 });
 
-
-socket.on('send message', (chat) => {
-    const chatContent = document.createElement('p');
-    chatContent.textContent = chat;
-
-    messageArea.appendChild(chatContent);
-});
+        socket.on('send message', (chat) => {
+             nameWithDateMessage = document.createElement('span');
+             nameWithDateMessage.textContent = chat;
+            messageArea.appendChild(nameWithDateMessage);
+        })
+        socket.emit('send message', send.value); 
+    
+// send.addEventListener('click',(checkMessage))
